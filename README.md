@@ -72,23 +72,23 @@ Our system uses multiple AI agents to analyze resumes and job descriptions. Here
 
 **Resume Processing Agent**
 **Overall Accuracy: 75-85%**
--![image alt]()
+-![image alt](https://github.com/shahil5z/ATS-Resume-Scoring-System/blob/7c30b3bc2b275650651bf9aa9865b0d07ecb011a/Accuracy%20Breakdown/1%20-%20Resume%20Processing%20Agent.png)
 
 **Job Description Analysis Agent**
 **Overall Accuracy: 80-90%**
--![image alt]()
+-![image alt](https://github.com/shahil5z/ATS-Resume-Scoring-System/blob/7c30b3bc2b275650651bf9aa9865b0d07ecb011a/Accuracy%20Breakdown/2%20-%20Job%20Description%20Analysis%20Agent.png)
 
 **ATS Scoring Agent**
 **Overall Accuracy: 70-80%**
--![image alt]()
+-![image alt](https://github.com/shahil5z/ATS-Resume-Scoring-System/blob/7c30b3bc2b275650651bf9aa9865b0d07ecb011a/Accuracy%20Breakdown/3%20-%20ATS%20Scoring%20Agent.png)
 
 **Recommendation Engine**
 **Overall Accuracy: 65-75%**
--![image alt]()
+-![image alt](https://github.com/shahil5z/ATS-Resume-Scoring-System/blob/7c30b3bc2b275650651bf9aa9865b0d07ecb011a/Accuracy%20Breakdown/4%20-%20Recommendation%20Engine.png)
 
 **Visualization Agent**
 **Overall Accuracy: 90-95%**
--![image alt]()
+-![image alt](https://github.com/shahil5z/ATS-Resume-Scoring-System/blob/7c30b3bc2b275650651bf9aa9865b0d07ecb011a/Accuracy%20Breakdown/5%20-%20Visualization%20Agent.png)
 
 **Overall System Accuracy**
 **Combined Accuracy: 70-80%**
@@ -97,34 +97,67 @@ The system provides a reliable first-pass evaluation of resumes against job desc
 
 ---
 
-## Setup
+## installation
 
 ```bash
 # Clone the repository
 git clone https://github.com/shahil5z/ATS-Resume-Scoring-System.git
 cd ATS-Resume-Scoring-System
+```
 
-# Create virtual environment
+### Create virtual environment
+```bash
 python -m venv venv
+```
 
-# Activate virtual environment
-# On Windows
+### Activate virtual environment
+***On Windows***
+```bash
 venv\Scripts\activate
-# On macOS/Linux
+```
+***On macOS/Linux***
+```bash
 source venv/bin/activate
+```
 
 # Install dependencies
+```bash
 pip install -r requirements.txt
+```
 
 # Download spaCy model
+```bash
 python -m spacy download en_core_web_sm
+```
 
 # Create .env file and add your OpenAI API key
-# Example:
+```bash
 # OPENAI_API_KEY=your_openai_api_key_here
+```
+
+### ADD THESE IN .ENV UNDER YOUR OPENAI KEY
+```bash
+# Database Configuration
+DB_TYPE=sqlite  # Options: "sqlite", "mongodb"
+
+# For SQLite
+SQLITE_DB_PATH=ats_resume.db
+
+# For MongoDB
+MONGO_URI=mongodb://localhost:27017/
+MONGO_DB_NAME=ats_resume_db
+
+# RAG Configuration
+RAG_VECTOR_STORE=chroma  # Options: "chroma", "faiss"
+RAG_EMBEDDING_MODEL=text-embedding-ada-002
+```
 
 # Run the application
+```bash
 python run.py
+```
+
+---
 
 ## Usage
 
@@ -132,89 +165,121 @@ python run.py
   python run.py
 The application will open in your web browser.
 
-### Upload Your Resume:
-- Click "Upload Resume" and select your resume file (PDF, DOCX, or TXT)
-- Review the extracted data in the "View Extracted Resume Data" section
+2. **Upload Your Resume**:
+   - Click "Upload Resume" and select your resume file (PDF, DOCX, or TXT)
+   - Review the extracted data in the "View Extracted Resume Data" section
 
+3. **Provide Job Description**:
+   - Upload a job description file or paste the text directly
+   - Review the extracted requirements in the "View Extracted Job Description Data" section
 
-### Provide Job Description:
-- Upload a job description file or paste the text directly
-- Review the extracted requirements in the "View Extracted Job Description Data" section
+4. **Score Your Resume**:
+   - Click "Score Resume" to analyze your resume against the job description
+   - Review your overall ATS score and detailed breakdown
 
-### Score Your Resume:
-- Click "Score Resume" to analyze your resume against the job description
-- Review your overall ATS score and detailed breakdown
+5. **Review Recommendations**:
+   - Examine the improvement recommendations
+   - Focus on high-priority suggestions first
 
-### Review Recommendations:
-- Examine the improvement recommendations
-- Focus on high-priority suggestions first
-
-### Download Report:
-- Click "Download Report (PDF)" to save a comprehensive analysis
-- Use this report to track your improvements over time
+6. **Download Report**:
+   - Click "Download Report (PDF)" to save a comprehensive analysis
+   - Use this report to track your improvements over time
 
 ## System Architecture
+
 The ATS Resume Scoring System consists of several specialized agents working together:
 
 ### Core Components
 
-***Resume Processing Agent***
-- Extracts and structures data from resumes
-- Identifies contact information, skills, experience, education, and summary
-- Handles multiple file formats and structures
+1. **Resume Processing Agent**
+   - Extracts and structures data from resumes
+   - Identifies contact information, skills, experience, education, and summary
+   - Handles multiple file formats and structures
 
-***Job Description Analysis Agent***
-- Parses job descriptions to identify requirements
-- Extracts required and preferred skills, experience needs, and education requirements
-- Structures unstructured job description text
+2. **Job Description Analysis Agent**
+   - Parses job descriptions to identify requirements
+   - Extracts required and preferred skills, experience needs, and education requirements
+   - Structures unstructured job description text
 
-***ATS Scoring Agent***
-- Evaluates resume-job description match across multiple dimensions
-- Provides weighted scoring based on industry standards
-- Calculates confidence intervals for scores
+3. **ATS Scoring Agent**
+   - Evaluates resume-job description match across multiple dimensions
+   - Provides weighted scoring based on industry standards
+   - Calculates confidence intervals for scores
 
-***Recommendation Engine***
-- Generates specific, actionable improvement suggestions
-- Prioritizes recommendations based on impact
-- Provides context-aware advice
+4. **Recommendation Engine**
+   - Generates specific, actionable improvement suggestions
+   - Prioritizes recommendations based on impact
+   - Provides context-aware advice
 
-***Visualization Agent***
-- Creates interactive charts and graphs
-- Generates professional PDF reports
-- Provides visual analysis of skills gaps and benchmarks
+5. **Visualization Agent**
+   - Creates interactive charts and graphs
+   - Generates professional PDF reports
+   - Provides visual analysis of skills gaps and benchmarks
 
 ### Supporting Components
 
-***Database Integration***
-- Stores scoring results and history
-- Supports both SQLite and MongoDB
-Enables session management and result tracking
+1. **Database Integration**
+   - Stores scoring results and history
+   - Supports both SQLite and MongoDB
+   - Enables session management and result tracking
 
-***RAG (Retrieval-Augmented Generation) System***
-- Provides enhanced insights using industry benchmarks
-- Offers context-specific recommendations
-- Improves with continued use***
+2. **RAG (Retrieval-Augmented Generation) System**
+   - Provides enhanced insights using industry benchmarks
+   - Offers context-specific recommendations
+   - Improves with continued use
 
-***File Processing Utilities***
-- Handles multiple file formats (PDF, DOCX, TXT)
-- Extracts text while preserving structure
-- Cleans and normalizes text for analysis
+3. **File Processing Utilities**
+   - Handles multiple file formats (PDF, DOCX, TXT)
+   - Extracts text while preserving structure
+   - Cleans and normalizes text for analysis
 
 ### Technology Stack
 
-***Frontend***: Streamlit for responsive web interface
-***NLP***: spaCy for text processing and entity recognition
-***File Parsing***: PyPDF2, pdfplumber, python-docx
-***Visualization***: Plotly, Matplotlib, Seaborn
-***Database***: SQLAlchemy (SQLite) or PyMongo (MongoDB)
-***RAG***: ChromaDB or FAISS with LangChain
-***AI Enhancement***: OpenAI API for advanced features
+- **Frontend**: Streamlit for responsive web interface
+- **NLP**: spaCy for text processing and entity recognition
+- **File Parsing**: PyPDF2, pdfplumber, python-docx
+- **Visualization**: Plotly, Matplotlib, Seaborn
+- **Database**: SQLAlchemy (SQLite) or PyMongo (MongoDB)
+- **RAG**: ChromaDB or FAISS with LangChain
+- **AI Enhancement**: OpenAI API for advanced features
 
-### Limitations
+## Limitations
+
 While the ATS Resume Scoring System is powerful, it has some limitations:
 
-***Format Dependency***: Works best with standard resume formats; creative or non-traditional formats may not parse as accurately.
-***Industry Specificity***: Provides general industry benchmarks but may not capture nuances of specialized fields.
-***Context Understanding***: Cannot assess the quality or impact of achievements, only their presence.
-***Cultural Fit***: Does not evaluate soft skills or cultural alignment with companies.
-***Language Support***: Currently optimized for English resumes; other languages may have reduced accuracy.
+1. **Format Dependency**: Works best with standard resume formats; creative or non-traditional formats may not parse as accurately.
+
+2. **Industry Specificity**: Provides general industry benchmarks but may not capture nuances of specialized fields.
+
+3. **Context Understanding**: Cannot assess the quality or impact of achievements, only their presence.
+
+4. **Cultural Fit**: Does not evaluate soft skills or cultural alignment with companies.
+
+5. **Language Support**: Currently optimized for English resumes; other languages may have reduced accuracy.
+
+## Contributing
+
+We welcome contributions to improve the ATS Resume Scoring System! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+### Development Guidelines
+
+- Follow PEP 8 style guidelines
+- Write comprehensive tests for new features
+- Update documentation as needed
+- Ensure all tests pass before submitting
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- The spaCy team for the excellent NLP library
+- Streamlit for the intuitive web framework
+- The open-source community for various parsing and visualization tools
