@@ -257,16 +257,6 @@ While the ATS Resume Scoring System is powerful, it has some limitations:
 
 5. **Language Support**: Currently optimized for English resumes; other languages may have reduced accuracy.
 
-## Contributing
-
-We welcome contributions to improve the ATS Resume Scoring System! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
 ### Development Guidelines
 
 - Follow PEP 8 style guidelines
