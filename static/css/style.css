@@ -1,0 +1,78 @@
+/* Main app styling */
+.main {
+    padding: 2rem;
+}
+
+/* Card styling */
+.css-1d391kg {
+    padding-top: 1rem;
+}
+
+/* Expander styling */
+.css-1adrfps {
+    border-radius: 0.5rem;
+    border: 1px solid #e6e6e6;
+    margin-bottom: 1rem;
+}
+
+/* Dataframe styling */
+.css-1kyxreq {
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+/* Metric styling */
+.css-1d391kg p {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* Skill tag styling */
+.css-1kyxreq span {
+    display: inline-block;
+    margin: 0.2rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    color: white;  /* Ensure text is white */
+}
+
+/* Header styling */
+h3 {
+    color: #2E86AB;
+    border-bottom: 2px solid #2E86AB;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Warning styling */
+.css-1cypcdb {
+    border-radius: 0.5rem;
+    border-left: 4px solid #ff5252;
+}
+
+/* Custom skill tag styling for better visibility */
+.skill-tag {
+    display: inline-block;
+    margin: 0.2rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    color: white;
+    font-weight: 500;
+}
+
+/* Required skills styling */
+.required-skill {
+    background-color: #E53935;
+}
+
+/* Preferred skills styling */
+.preferred-skill {
+    background-color: #43A047;
+}
+
+/* Resume skills styling */
+.resume-skill {
+    background-color: #1E88E5;
+}
